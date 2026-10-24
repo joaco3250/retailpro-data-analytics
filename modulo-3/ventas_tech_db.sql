@@ -1,20 +1,10 @@
--- ============================================================
--- Ventas_Tech_DB - Checkpoint: Script SQL de Ingeniería de Datos
--- Motor: SQL Server (SSMS)
--- ============================================================
-
-
 -- === SECCIÓN 1: DROP ===
--- Se borran en orden inverso a las dependencias
 DROP TABLE IF EXISTS ventas;
 DROP TABLE IF EXISTS productos;
 DROP TABLE IF EXISTS clientes;
 DROP TABLE IF EXISTS categorias;
 
-
 -- === SECCIÓN 2: CREATE ===
--- Primero las tablas que no dependen de ninguna otra
-
 CREATE TABLE categorias (
     id_categoria      INT           PRIMARY KEY,
     nombre_categoria  VARCHAR(50)   NOT NULL,
@@ -50,10 +40,7 @@ CREATE TABLE ventas (
     FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
 );
 
-
 -- === SECCIÓN 3: INSERT ===
--- Orden: primero categorias y clientes, después productos y ventas
-
 INSERT INTO categorias (id_categoria, nombre_categoria, descripcion) VALUES
   (1, 'Computación',    'Laptops, PCs y monitores'),
   (2, 'Accesorios',     'Periféricos y complementos'),
@@ -89,7 +76,7 @@ INSERT INTO ventas (id_venta, id_cliente, id_producto, cantidad, precio_unitario
 
 
 -- === SECCIÓN 4: VALIDACIÓN ===
-SELECT * FROM categorias;   -- esperado: 4 filas
-SELECT * FROM clientes;     -- esperado: 5 filas
-SELECT * FROM productos;    -- esperado: 6 filas
-SELECT * FROM ventas;       -- esperado: 10 filas
+SELECT * FROM categorias;  
+SELECT * FROM clientes;     
+SELECT * FROM productos;    
+SELECT * FROM ventas;       
